@@ -3,6 +3,9 @@
                                     <<<<<<<<<< All the importent question >>>>>>>>>>>>>  
 
 1-How to swap the value?
+   a=10
+   b=20
+   a,b=b,a
 
 2-Find the occurance in in given string ?
 
@@ -13,4 +16,14 @@
 5-Find the occurance in the bethout using count and counter and regex ?
 
 6-What is the list, dict string,tuple and it operation?
+
+7-What is largest value in the list?
+
+8-What is class and method and instance ?
+
+9-What is the inheritance and polymorphisam?
+
+10-What is the palaindrom ?
+
+11-
 
