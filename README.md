@@ -24,7 +24,10 @@
 
 9-What is the inheritance and polymorphisam?
 
+10-Give one example 
+
 10-What is the palaindrom ?
 
-11-
+
+
 
