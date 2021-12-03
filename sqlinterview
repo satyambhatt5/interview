@@ -1,0 +1,273 @@
+                      
+                      <<<<<#SQL & RDBMS Interview Questions >>>
+
+
+#Series: 1️⃣
+Level: Beginner
+Topics:
+
+1️⃣ Introduction to RDBMS
+2️⃣ Normalisation
+3️⃣ Introduction to SQL
+4️⃣ Tables and Fields
+5️⃣ Constraints
+6️⃣ Index
+7️⃣ DML Operations
+8️⃣ Joins
+9️⃣ Set Operations
+
+1️⃣ Introduction to RDBMS
+
+✪ What is a Database?
+✪ What are different types of Databases?
+✪ What is DBMS?
+✪ What is difference between Database and DBMS?
+✪ What is RDBMS?
+✪ Which are popular RDBMS vendors?
+✪ What is ACID property in Database?
+
+2️⃣ Normalisation
+
+✪ What is Normalisation?
+✪ Why is Normalisation necessary?
+✪ What are the disadvantages of not performing Normalisation?
+✪ What are different Normal Forms (NF)?
+✪ What is Denormalisation?
+
+3️⃣ Introduction to SQL
+
+✪ What is SQL?
+✪ What is the use of SQL?
+✪ Is SQL a programming language?
+✪ Which languages are part of SQL? (DDL, DML, DCL, TCL)
+✪ What is DDL?
+✪ What is DCL?
+✪ What is DML?
+✪ What is TCL?
+
+4️⃣ Tables and Fields
+
+✪ What is a Table?
+✪ What is a field in a Table?
+✪ Write a SQL command to create a Table.
+✪ How to change the name of a Table?
+✪ How to truncate a table?
+✪ How to drop a table?
+
+5️⃣ Constraints
+
+✪ What is a constraint?
+✪ What are different levels of constraints?
+✪ Give examples of various constraints?
+✪ What is a primary key?
+✪ What is a unique key?
+✪ Difference between a primary key and a unique key.
+✪ What is a foreign key?
+✪ What is NULL value?
+✪ What is NOT NULL constraint?
+✪ Is blank space or Zero (0) same as NULL?
+
+6️⃣ Index
+
+✪ What is an index?
+✪ What are different types of Indexes?
+✪ What is the unique index?
+✪ What is clustered index?
+✪ What is non-clustered index?
+✪ What is the difference between clustered and non-clustered index?
+
+7️⃣ DML Operations
+
+✪ How to insert rows into a table?
+✪ How to update data in a table?
+✪ How to delete a row in a table?
+✪ Difference between DELETE and TRUNCATE?
+✪ How to fetch rows of a table?
+✪ What is a query condition? How to write it in SQL?
+✪ How to sort the fetched records?
+✪ What is grouping? How to write in SQL?
+✪ How to find how many records being fetched?
+✪ How to find maximum and minimum value for a field in fetched records?
+✪ How to sum values in a field for all records?
+
+8️⃣ Joins
+
+✪ What is a join?
+✪ What are different types of joins?
+✪ What is Inner Join?
+✪ What is a Self Join?
+✪ What is Left Outer Join?
+✪ What is Right Outer Join?
+✪ What is Full Outer Join?
+✪ What is Cross Join?
+
+9️⃣ Set Operations
+
+✪ What is UNION?
+✪ What is UNION ALL?
+✪ What is INTERSECTION?
+✪ What is MINUS?
+
+
+Series 2 
+Level: Beginner 2
+Topics:
+
+1️⃣ Data Types
+2️⃣ Operators
+3️⃣ Functions
+4️⃣ Views
+5️⃣ Aggregation
+
+1️⃣ Data Types
+
+* Data Types vary across SQL Vendors like Oracle, MySQL etc. So questions are specific to particular vendors.
+
+✪ When do you define data type of a column?
+✪ Can a data type be changed later? What are the restrictions?
+✪ What are different numeric data types?
+✪ What data type is used to store a boolean?
+✪ What data type is used to store bits?
+✪ What data type is used for integers?
+✪ What data type is used for floating point numbers?
+✪ What are different String data types?
+✪ What data type is used to store binary data?
+✪ What is the difference between CHAR, VARCHAR and VARCHAR2 (Oracle)?
+✪ What is a Large Object Data Type?
+✪ What are different Large Object Data Types?
+✪ What is the difference between BLOB and CLOB?
+✪ When should you go for a large object data type instead of a String data type?
+✪ What are different Date/Time Data Types?
+
+2️⃣ Operators
+
+✪ What operator to use to verify if all subqueries meet the condition?
+✪ What operator to use to verify if any of the subqueries meet the condition?
+✪ What operator to use to check if operand is within a range?
+✪ What operator to use to check if operand should one of the given values.
+✪ What operator to use to check if a subquery returns at least one record?
+✪ What operator to use to check if operand matches a pattern?
+✪ What is the difference between BETWEEN and IN operators?
+✪ What is the difference between = and LIKE operator?
+✪ How to check if a field is containing a NULL value?
+✪ What are different comparison operators?
+✪ What is the operator to check for not equality?
+
+3️⃣ Functions
+
+✪ What is a SQL function?
+✪ What function to use to return current system date and time?
+✪ What function to use to find length of a text field?
+✪ What function to use to convert a text field to upper/lower case?
+✪ How to get a substring?
+✪ What are different format options to display a text field?
+✪ How to round a numeric field to certain precision?
+✪ Give examples of some Date/Time functions?
+✪ How to get the year/month/date from a Date field?
+✪ How to get last day of the month?
+4️⃣ Views
+
+✪ What is a View?
+✪ How is a View different from a Table?
+✪ What are various use cases of a View?
+✪ Can a View be used to insert/delete records?
+✪ How to create/update a View?
+✪ What is "WITH CHECK OPTIONS"?
+✪ What is a Materialised View? Difference with a View?
+
+5️⃣ Aggregation
+
+✪ What do you mean by aggregation?
+✪ What is the difference between aggregation and projection?
+✪ What does "GROUP BY" statement do?
+✪ What is the difference between WHERE and HAVING?
+✪ Is "ORDER BY" an aggregation statement?
+✪ What function to use to find number of records?
+✪ What function to use fetch the first/last value for a field?
+✪ What function to use to fetch max/min/average value of a field?
+✪ What function to use to find summation of all values for a field?
+
+
+Purple heart SQL Interview Questions [3]
+
+⇰ DDL
+⇰ DML
+⇰ Sequence
+⇰ Synonym
+⇰ Trigger
+
+1️⃣ DDL
+
+✪ Give some examples of DDL commands
+✪ Write syntax of creating a table
+✪ How to specify default value for a column?
+✪ How to specify a foreign key?
+✪ How to specify a unique key?
+✪ How to specify multiple columns as primary key?
+✪ What are different constraints you can add to a column while creating a table?
+✪ How to create a copy of a table? (both structure and, data)
+✪ You have 'n' tables and asked to create a separate table which will contain few columns from these tables with data being copied.
+✪ What is SELECT INTO used for? (In SQL Server)
+✪ Difference between ALTER and RENAME
+✪ Can a previously nullable column be altered to a NOT NULL column? If yes, explain the steps.
+
+
+2️⃣ #DML
+
+✪ What are different syntax for inserting records into a table?
+✪ What is the syntax to insert multiple records at a time?
+✪ Explain how DML operations are performed on a View. Or, View is for SELECT queries only?
+✪ How to insert rows into a table?
+✪ How to update data in a table?
+✪ How to delete a row in a table?
+✪ Difference between DELETE and TRUNCATE?
+✪ How to fetch rows of a table?
+✪ What is a query condition? How to write it in SQL?
+✪ How to sort the fetched records?
+✪ What is grouping? How to write in SQL?
+✪ How to find how many records being fetched?
+✪ How to find maximum and minimum value for a field in fetched records?
+✪ How to sum values in a field for all records?
+
+
+3️⃣ Sequence
+
+✪ What is a sequence? Why is it useful?
+✪ Write syntax for creating a syntax.
+✪ What does a sequence return?
+✪ How to fetch the value from a sequence?
+✪ Can a sequence definition be changed once after creating? What is the syntax?
+✪ What details we can pass while creating a sequence?
+✪ What details of a sequence can be changed?
+✪ How to reset a sequence?
+
+
+4️⃣ Synonym
+
+✪ What is a synonym?
+✪ Why is synonym useful?
+✪ For which all database objects, a synonym can be created?
+✪ Write syntax for creating a synonym.
+✪ What is a public and private synonym?
+✪ Can a private synonym be changed to public and vice versa later?
+✪ How to change definition of a synonym?
+✪ What all details can be changed for a synonym?
+
+
+5️⃣ Trigger
+
+✪ What is a trigger?
+✪ Describe how a trigger functions.
+✪ Write syntax for creating a trigger.
+✪ What are different types of triggers?
+✪ Give examples of some events (operations) for which a trigger can be run.
+✪ Describe a BEFORE trigger.
+✪ Describe an AFTER trigger.
+✪ Describe an INSTEAD OF trigger.
+✪ What can an INSTEAD OF trigger do?
+✪ How to use a view for all DML operations using a trigger? Describe.
+
+
+------------Work in progresss--------------------
+
+
