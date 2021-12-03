@@ -3,9 +3,10 @@
                                     <<<<<<<<<< All the importent question >>>>>>>>>>>>>  
 
 1-How to swap the value?
-   a=10
+   
+   <<<<a=10
    b=20
-   a,b=b,a
+   a,b=b,a>>>>
 
 2-Find the occurance in in given string ?
 
