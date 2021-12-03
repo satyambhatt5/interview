@@ -1,5 +1,11 @@
        <<<Database creation and work with it>>>
+       
+       
+Database creation 
 
+CREATE DATABASE testDB;
+
+#Table Create
 
 CREATE TABLE Employee (
 	EMPLOYEE_ID INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
@@ -21,6 +27,7 @@ INSERT INTO Employee
 		(006, 'Deepak', 'Gupta', 200000, '17-06-11 09.00.00', 'Account', 015),
 		(007, 'Jennifer', 'Paul', 75000, '17-01-20 09.00.00', 'Account', 012),
 		(008, 'Deepika', 'Sharma', 90000, '17-04-11 09.00.00', 'Admin', 017);
+		
 
 CREATE TABLE Bonus (
 	EMPLOYEE_REF_ID INT,
