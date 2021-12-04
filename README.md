@@ -1,5 +1,7 @@
 https://pysparktutorials.wordpress.com/string-functions/
 
+http://h2database.com/html/functions.html
+
 
 
 
