@@ -63,6 +63,16 @@ Topics:
 ✪ What is a unique key?
 ✪ Difference between a primary key and a unique key.
 ✪ What is a foreign key?
+
+CREATE TABLE Orders (
+    OrderID int NOT NULL,
+    OrderNumber int NOT NULL,
+    PersonID int,
+    PRIMARY KEY (OrderID),
+    CONSTRAINT FK_PersonOrder FOREIGN KEY (PersonID)
+    REFERENCES Persons(PersonID)
+);
+
 ✪ What is NULL value?
 ✪ What is NOT NULL constraint?
 ✪ Is blank space or Zero (0) same as NULL?
