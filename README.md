@@ -4,6 +4,8 @@ http://h2database.com/html/functions.html
 
 https://stevestedman.com/2015/05/tsql-join-types-poster-version-4-1/
 
+https://www.javatpoint.com/mysql-tutorial
+
 
 
 
