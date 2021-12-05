@@ -1,0 +1,294 @@
+#SHOW THE DATABASE 
+
+mysql> SHOW DATABASES;
++--------------------+
+| Database           |
++--------------------+
+| classicmodels      |
+| demos              |
+| education          |
+| escape             |
+| information_schema |
+| myflixdb           |
+| mysql              |
+| performance_schema |
+| sys                |
+| testdb             |
++--------------------+
+10 rows in set (0.03 sec)
+
+#USING THE DATABASES
+
+mysql> USE TESTDB;
+Database changed
+mysql> SELECT  * FROM employee;
++-------------+------------+-----------+--------+---------------------+------------+------------+
+| EMPLOYEE_ID | FIRST_NAME | LAST_NAME | SALARY | JOINING_DATE        | DEPARTMENT | MANAGER_ID |
++-------------+------------+-----------+--------+---------------------+------------+------------+
+|           1 | James      | Smith     | 100000 | 2017-02-20 09:00:00 | HR         |          2 |
+|           2 | Jessica    | Kohl      |  80000 | 2017-06-11 09:00:00 | Admin      |          5 |
+|           3 | Alex       | Garner    | 300000 | 2017-02-20 09:00:00 | HR         |         11 |
+|           4 | Pratik     | Pandey    | 500000 | 2017-02-20 09:00:00 | Admin      |         20 |
+|           5 | Christine  | Robinson  | 500000 | 2017-06-11 09:00:00 | Admin      |          7 |
+|           6 | Deepak     | Gupta     | 200000 | 2017-06-11 09:00:00 | Account    |         15 |
+|           7 | Jennifer   | Paul      |  75000 | 2017-01-20 09:00:00 | Account    |         12 |
+|           8 | Deepika    | Sharma    |  90000 | 2017-04-11 09:00:00 | Admin      |         17 |
++-------------+------------+-----------+--------+---------------------+------------+------------+
+8 rows in set (0.00 sec)
+
+
+####FIND THE MAX SALARY FROM OF EMPLOYEE  IN THE TABLE 
+
+mysql> SELECT E.*, MAX(SALARY) AS MAX_SALARY
+    -> FROM EMPLOYEE AS E;
++-------------+------------+-----------+--------+---------------------+------------+------------+------------+
+| EMPLOYEE_ID | FIRST_NAME | LAST_NAME | SALARY | JOINING_DATE        | DEPARTMENT | MANAGER_ID | MAX_SALARY |
++-------------+------------+-----------+--------+---------------------+------------+------------+------------+
+|           1 | James      | Smith     | 100000 | 2017-02-20 09:00:00 | HR         |          2 |     500000 |
++-------------+------------+-----------+--------+---------------------+------------+------------+------------+
+1 row in set (0.00 sec)
+
+#HIGHEST SALARY IN WHOLE DEPARTMENT 
+
+mysql> SELECT E.*,
+    -> MAX(SALARY) OVER() AS MAX_SALARY
+    -> FROM EMPLOYEE AS E;
++-------------+------------+-----------+--------+---------------------+------------+------------+------------+
+| EMPLOYEE_ID | FIRST_NAME | LAST_NAME | SALARY | JOINING_DATE        | DEPARTMENT | MANAGER_ID | MAX_SALARY |
++-------------+------------+-----------+--------+---------------------+------------+------------+------------+
+|           1 | James      | Smith     | 100000 | 2017-02-20 09:00:00 | HR         |          2 |     500000 |
+|           2 | Jessica    | Kohl      |  80000 | 2017-06-11 09:00:00 | Admin      |          5 |     500000 |
+|           3 | Alex       | Garner    | 300000 | 2017-02-20 09:00:00 | HR         |         11 |     500000 |
+|           4 | Pratik     | Pandey    | 500000 | 2017-02-20 09:00:00 | Admin      |         20 |     500000 |
+|           5 | Christine  | Robinson  | 500000 | 2017-06-11 09:00:00 | Admin      |          7 |     500000 |
+|           6 | Deepak     | Gupta     | 200000 | 2017-06-11 09:00:00 | Account    |         15 |     500000 |
+|           7 | Jennifer   | Paul      |  75000 | 2017-01-20 09:00:00 | Account    |         12 |     500000 |
+|           8 | Deepika    | Sharma    |  90000 | 2017-04-11 09:00:00 | Admin      |         17 |     500000 |
++-------------+------------+-----------+--------+---------------------+------------+------------+------------+
+8 rows in set (0.00 sec)
+
+###FIND THE HIGHEST SALARY FROM EACH DEPARTMENT 
+
+mysql> SELECT E.*,
+    -> MAX(SALARY) OVER(PARTITION BY DEPARTMENT) AS MAX_SALARY
+    -> FROM EMPLOYEE AS E;
++-------------+------------+-----------+--------+---------------------+------------+------------+------------+
+| EMPLOYEE_ID | FIRST_NAME | LAST_NAME | SALARY | JOINING_DATE        | DEPARTMENT | MANAGER_ID | MAX_SALARY |
++-------------+------------+-----------+--------+---------------------+------------+------------+------------+
+|           6 | Deepak     | Gupta     | 200000 | 2017-06-11 09:00:00 | Account    |         15 |     200000 |
+|           7 | Jennifer   | Paul      |  75000 | 2017-01-20 09:00:00 | Account    |         12 |     200000 |
+|           2 | Jessica    | Kohl      |  80000 | 2017-06-11 09:00:00 | Admin      |          5 |     500000 |
+|           4 | Pratik     | Pandey    | 500000 | 2017-02-20 09:00:00 | Admin      |         20 |     500000 |
+|           5 | Christine  | Robinson  | 500000 | 2017-06-11 09:00:00 | Admin      |          7 |     500000 |
+|           8 | Deepika    | Sharma    |  90000 | 2017-04-11 09:00:00 | Admin      |         17 |     500000 |
+|           1 | James      | Smith     | 100000 | 2017-02-20 09:00:00 | HR         |          2 |     300000 |
+|           3 | Alex       | Garner    | 300000 | 2017-02-20 09:00:00 | HR         |         11 |     300000 |
++-------------+------------+-----------+--------+---------------------+------------+------------+------------+
+8 rows in set (0.00 sec)
+
+--*BENIFIT OF THE ROW NUMBER IN THE  GIVEN VALUE IS WE GET EACH AND EVERY ROW NUMBER
+---BUT WE CAN SEE THIS THERE EMPLOYEE ID IS NOT SHORTED
+
+mysql> SELECT E.*,
+    -> ROW_NUMBER() OVER(PARTITION BY DEPARTMENT) AS ROW_NUMBERS
+    -> FROM EMPLOYEE AS E;
++-------------+------------+-----------+--------+---------------------+------------+------------+-------------+
+| EMPLOYEE_ID | FIRST_NAME | LAST_NAME | SALARY | JOINING_DATE        | DEPARTMENT | MANAGER_ID | ROW_NUMBERS |
++-------------+------------+-----------+--------+---------------------+------------+------------+-------------+
+|           6 | Deepak     | Gupta     | 200000 | 2017-06-11 09:00:00 | Account    |         15 |           1 |
+|           7 | Jennifer   | Paul      |  75000 | 2017-01-20 09:00:00 | Account    |         12 |           2 |
+|           2 | Jessica    | Kohl      |  80000 | 2017-06-11 09:00:00 | Admin      |          5 |           1 |
+|           4 | Pratik     | Pandey    | 500000 | 2017-02-20 09:00:00 | Admin      |         20 |           2 |
+|           5 | Christine  | Robinson  | 500000 | 2017-06-11 09:00:00 | Admin      |          7 |           3 |
+|           8 | Deepika    | Sharma    |  90000 | 2017-04-11 09:00:00 | Admin      |         17 |           4 |
+|           1 | James      | Smith     | 100000 | 2017-02-20 09:00:00 | HR         |          2 |           1 |
+|           3 | Alex       | Garner    | 300000 | 2017-02-20 09:00:00 | HR         |         11 |           2 |
++-------------+------------+-----------+--------+---------------------+------------+------------+-------------+
+8 rows in set (0.00 sec)
+
+#NEED TO ORDERR THE VALUE 
+
+mysql> SELECT E.*,
+    -> ROW_NUMBER() OVER(PARTITION BY DEPARTMENT ORDER BY EMPLOYEE_ID ) AS ROW_NUMBERS
+    -> FROM EMPLOYEE AS E;
++-------------+------------+-----------+--------+---------------------+------------+------------+-------------+
+| EMPLOYEE_ID | FIRST_NAME | LAST_NAME | SALARY | JOINING_DATE        | DEPARTMENT | MANAGER_ID | ROW_NUMBERS |
++-------------+------------+-----------+--------+---------------------+------------+------------+-------------+
+|           6 | Deepak     | Gupta     | 200000 | 2017-06-11 09:00:00 | Account    |         15 |           1 |
+|           7 | Jennifer   | Paul      |  75000 | 2017-01-20 09:00:00 | Account    |         12 |           2 |
+|           2 | Jessica    | Kohl      |  80000 | 2017-06-11 09:00:00 | Admin      |          5 |           1 |
+|           4 | Pratik     | Pandey    | 500000 | 2017-02-20 09:00:00 | Admin      |         20 |           2 |
+|           5 | Christine  | Robinson  | 500000 | 2017-06-11 09:00:00 | Admin      |          7 |           3 |
+|           8 | Deepika    | Sharma    |  90000 | 2017-04-11 09:00:00 | Admin      |         17 |           4 |
+|           1 | James      | Smith     | 100000 | 2017-02-20 09:00:00 | HR         |          2 |           1 |
+|           3 | Alex       | Garner    | 300000 | 2017-02-20 09:00:00 | HR         |         11 |           2 |
++-------------+------------+-----------+--------+---------------------+------------+------------+-------------+
+8 rows in set (0.00 sec)
+
+#FETCH THE TOP THREE EMPLOYEE SALARY IN EACH DEPARTMENT ORDER BY EMPLOYEE ID 
+
+mysql> SELECT * FROM (SELECT E.*,
+    -> ROW_NUMBER() OVER(PARTITION BY DEPARTMENT ORDER BY EMPLOYEE_ID ) AS ROW_NUMBERS
+    -> FROM EMPLOYEE AS E) AS X
+    -> WHERE ROW_NUMBERS <= 3;
++-------------+------------+-----------+--------+---------------------+------------+------------+-------------+
+| EMPLOYEE_ID | FIRST_NAME | LAST_NAME | SALARY | JOINING_DATE        | DEPARTMENT | MANAGER_ID | ROW_NUMBERS |
++-------------+------------+-----------+--------+---------------------+------------+------------+-------------+
+|           6 | Deepak     | Gupta     | 200000 | 2017-06-11 09:00:00 | Account    |         15 |           1 |
+|           7 | Jennifer   | Paul      |  75000 | 2017-01-20 09:00:00 | Account    |         12 |           2 |
+|           2 | Jessica    | Kohl      |  80000 | 2017-06-11 09:00:00 | Admin      |          5 |           1 |
+|           4 | Pratik     | Pandey    | 500000 | 2017-02-20 09:00:00 | Admin      |         20 |           2 |
+|           5 | Christine  | Robinson  | 500000 | 2017-06-11 09:00:00 | Admin      |          7 |           3 |
+|           1 | James      | Smith     | 100000 | 2017-02-20 09:00:00 | HR         |          2 |           1 |
+|           3 | Alex       | Garner    | 300000 | 2017-02-20 09:00:00 | HR         |         11 |           2 |
++-------------+------------+-----------+--------+---------------------+------------+------------+-------------+
+7 rows in set (0.00 sec)
+
+#RANK THE OF THE TOP THREE SALARY IN THE EMPLOYEE TABLE 
+
+mysql> SELECT E.*,
+    -> RANK() OVER(PARTITION BY DEPARTMENT ORDER BY SALARY DESC) AS RANK_NUMBERS
+    -> FROM EMPLOYEE AS E;
++-------------+------------+-----------+--------+---------------------+------------+------------+--------------+
+| EMPLOYEE_ID | FIRST_NAME | LAST_NAME | SALARY | JOINING_DATE        | DEPARTMENT | MANAGER_ID | RANK_NUMBERS |
++-------------+------------+-----------+--------+---------------------+------------+------------+--------------+
+|           6 | Deepak     | Gupta     | 200000 | 2017-06-11 09:00:00 | Account    |         15 |            1 |
+|           7 | Jennifer   | Paul      |  75000 | 2017-01-20 09:00:00 | Account    |         12 |            2 |
+|           4 | Pratik     | Pandey    | 500000 | 2017-02-20 09:00:00 | Admin      |         20 |            1 |
+|           5 | Christine  | Robinson  | 500000 | 2017-06-11 09:00:00 | Admin      |          7 |            1 |
+|           8 | Deepika    | Sharma    |  90000 | 2017-04-11 09:00:00 | Admin      |         17 |            3 |
+|           2 | Jessica    | Kohl      |  80000 | 2017-06-11 09:00:00 | Admin      |          5 |            4 |
+|           3 | Alex       | Garner    | 300000 | 2017-02-20 09:00:00 | HR         |         11 |            1 |
+|           1 | James      | Smith     | 100000 | 2017-02-20 09:00:00 | HR         |          2 |            2 |
++-------------+------------+-----------+--------+---------------------+------------+------------+--------------+
+8 rows in set (0.00 sec)
+
+##--BUT WE NEED THE TOP 3 HIGHEST PAID SALARY RANK IN EACH DEPARTMENT
+
+mysql> SELECT *
+    -> FROM (SELECT E.*,
+    -> RANK() OVER(PARTITION BY DEPARTMENT ORDER BY SALARY DESC) AS RANK_NUMBERS
+    -> FROM EMPLOYEE AS E) AS X
+    -> WHERE X.RANK_NUMBERS <= 3;
++-------------+------------+-----------+--------+---------------------+------------+------------+--------------+
+| EMPLOYEE_ID | FIRST_NAME | LAST_NAME | SALARY | JOINING_DATE        | DEPARTMENT | MANAGER_ID | RANK_NUMBERS |
++-------------+------------+-----------+--------+---------------------+------------+------------+--------------+
+|           6 | Deepak     | Gupta     | 200000 | 2017-06-11 09:00:00 | Account    |         15 |            1 |
+|           7 | Jennifer   | Paul      |  75000 | 2017-01-20 09:00:00 | Account    |         12 |            2 |
+|           4 | Pratik     | Pandey    | 500000 | 2017-02-20 09:00:00 | Admin      |         20 |            1 |
+|           5 | Christine  | Robinson  | 500000 | 2017-06-11 09:00:00 | Admin      |          7 |            1 |
+|           8 | Deepika    | Sharma    |  90000 | 2017-04-11 09:00:00 | Admin      |         17 |            3 |
+|           3 | Alex       | Garner    | 300000 | 2017-02-20 09:00:00 | HR         |         11 |            1 |
+|           1 | James      | Smith     | 100000 | 2017-02-20 09:00:00 | HR         |          2 |            2 |
++-------------+------------+-----------+--------+---------------------+------------+------------+--------------+
+7 rows in set (0.00 sec)
+
+#DENSE WILL HELP THE FIND THE WITHOUT SKIPPING THE VALUE 
+
+mysql> SELECT E.*,
+    -> RANK() OVER(PARTITION BY DEPARTMENT ORDER BY SALARY DESC) AS RANK_NUMBERS,
+    -> DENSE_RANK() OVER(PARTITION BY DEPARTMENT ORDER BY SALARY DESC) AS DENSE_NUMBERS
+    -> FROM EMPLOYEE AS E;
++-------------+------------+-----------+--------+---------------------+------------+------------+--------------+---------------+
+| EMPLOYEE_ID | FIRST_NAME | LAST_NAME | SALARY | JOINING_DATE        | DEPARTMENT | MANAGER_ID | RANK_NUMBERS | DENSE_NUMBERS |
++-------------+------------+-----------+--------+---------------------+------------+------------+--------------+---------------+
+|           6 | Deepak     | Gupta     | 200000 | 2017-06-11 09:00:00 | Account    |         15 |            1 |             1 |
+|           7 | Jennifer   | Paul      |  75000 | 2017-01-20 09:00:00 | Account    |         12 |            2 |             2 |
+|           4 | Pratik     | Pandey    | 500000 | 2017-02-20 09:00:00 | Admin      |         20 |
+      1 |             1 |
+|           5 | Christine  | Robinson  | 500000 | 2017-06-11 09:00:00 | Admin      |          7 |            1 |             1 |
+|           8 | Deepika    | Sharma    |  90000 | 2017-04-11 09:00:00 | Admin      |         17 |            3 |             2 |
+|           2 | Jessica    | Kohl      |  80000 | 2017-06-11 09:00:00 | Admin      |          5 |            4 |             3 |
+|           3 | Alex       | Garner    | 300000 | 2017-02-20 09:00:00 | HR         |         11 |            1 |             1 |
+|           1 | James      | Smith     | 100000 | 2017-02-20 09:00:00 | HR         |          2 |            2 |             2 |
++-------------+------------+-----------+--------+---------------------+------------+------------+--------------+---------------+
+8 rows in set (0.00 sec)
+
+#COMAPARITON BETWEEN THE ROW_NUMBER() AND RANK() AND DENSE_RANK()
+
+mysql> SELECT E.*,
+    -> ROW_NUMBER() OVER(PARTITION BY DEPARTMENT ORDER BY SALARY DESC ) AS ROW_NUMBERS,
+    -> RANK() OVER(PARTITION BY DEPARTMENT ORDER BY SALARY DESC) AS RANK_NUMBERS,
+    -> DENSE_RANK() OVER(PARTITION BY DEPARTMENT ORDER BY SALARY DESC) AS DENSE_NUMBERS
+    -> FROM EMPLOYEE AS E;
++-------------+------------+-----------+--------+---------------------+------------+------------+-------------+--------------+---------------+
+| EMPLOYEE_ID | FIRST_NAME | LAST_NAME | SALARY | JOINING_DATE        | DEPARTMENT | MANAGER_ID | ROW_NUMBERS | RANK_NUMBERS | DENSE_NUMBERS |
++-------------+------------+-----------+--------+---------------------+------------+------------+-------------+--------------+---------------+
+|           6 | Deepak     | Gupta     | 200000 | 2017-06-11 09:00:00 | Account    |         15 |           1 |            1 |             1 |
+|           7 | Jennifer   | Paul      |  75000 | 2017-01-20 09:00:00 | Account    |         12 |           2 |            2 |             2 |
+|           4 | Pratik     | Pandey    | 500000 | 2017-02-20 09:00:00 | Admin      |         20 |           1 |            1 |             1 |
+|           5 | Christine  | Robinson  | 500000 | 2017-06-11 09:00:00 | Admin      |          7 |           2 |            1 |             1 |
+|           8 | Deepika    | Sharma    |  90000 | 2017-04-11 09:00:00 | Admin      |         17 |           3 |            3 |             2 |
+|           2 | Jessica    | Kohl      |  80000 | 2017-06-11 09:00:00 | Admin      |          5 |           4 |            4 |             3 |
+|           3 | Alex       | Garner    | 300000 | 2017-02-20 09:00:00 | HR         |         11 |           1 |            1 |             1 |
+|           1 | James      | Smith     | 100000 | 2017-02-20 09:00:00 | HR         |          2 |           2 |            2 |             2 |
++-------------+------------+-----------+--------+---------------------+------------+------------+-------------+--------------+---------------+
+8 rows in set (0.00 sec)
+
+#####  LAG AND LEAD FUNCTION  IN WINDOW 
+LAG WILL FIND TO HELP PREVIOUS DETAILS 
+
+mysql> SELECT E.*,
+    -> LAG(SALARY) OVER(PARTITION BY DEPARTMENT ORDER BY EMPLOYEE_ID ) AS PREVIOUS_EMPLOYEE_SALARY
+    -> FROM EMPLOYEE AS E;
++-------------+------------+-----------+--------+---------------------+------------+------------+--------------------------+
+| EMPLOYEE_ID | FIRST_NAME | LAST_NAME | SALARY | JOINING_DATE        | DEPARTMENT | MANAGER_ID | PREVIOUS_EMPLOYEE_SALARY |
++-------------+------------+-----------+--------+---------------------+------------+------------+--------------------------+
+|           6 | Deepak     | Gupta     | 200000 | 2017-06-11 09:00:00 | Account    |         15 |                     NULL |
+|           7 | Jennifer   | Paul      |  75000 | 2017-01-20 09:00:00 | Account    |         12 |                   200000 |
+|           2 | Jessica    | Kohl      |  80000 | 2017-06-11 09:00:00 | Admin      |          5 |                     NULL |
+|           4 | Pratik     | Pandey    | 500000 | 2017-02-20 09:00:00 | Admin      |         20 |                    80000 |
+|           5 | Christine  | Robinson  | 500000 | 2017-06-11 09:00:00 | Admin      |          7 |                   500000 |
+|           8 | Deepika    | Sharma    |  90000 | 2017-04-11 09:00:00 | Admin      |         17 |                   500000 |
+|           1 | James      | Smith     | 100000 | 2017-02-20 09:00:00 | HR         |          2 |                     NULL |
+|           3 | Alex       | Garner    | 300000 | 2017-02-20 09:00:00 | HR         |         11 |                   100000 |
++-------------+------------+-----------+--------+---------------------+------------+------------+--------------------------+
+8 rows in set (0.12 sec)
+
+
+#LEAD WILL HELP THE NEXT EMPLOYEE SALARY 
+
+mysql> SELECT E.*,
+    -> LAG(SALARY) OVER(PARTITION BY DEPARTMENT ORDER BY EMPLOYEE_ID ) AS PREVIOUS_EMPLOYEE_SALARY,
+    -> LEAD(SALARY) OVER(PARTITION BY DEPARTMENT ORDER BY EMPLOYEE_ID ) AS NEXT_EMPLOYEE_SALARY
+    -> FROM EMPLOYEE AS E;
++-------------+------------+-----------+--------+---------------------+------------+------------+--------------------------+----------------------+
+| EMPLOYEE_ID | FIRST_NAME | LAST_NAME | SALARY | JOINING_DATE        | DEPARTMENT | MANAGER_ID | PREVIOUS_EMPLOYEE_SALARY | NEXT_EMPLOYEE_SALARY |
++-------------+------------+-----------+--------+---------------------+------------+------------+--------------------------+----------------------+
+|           6 | Deepak     | Gupta     | 200000 | 2017-06-11 09:00:00 | Account    |         15 |                     NULL |                75000 |
+|           7 | Jennifer   | Paul      |  75000 | 2017-01-20 09:00:00 | Account    |         12 |                   200000 |                 NULL |
+|           2 | Jessica    | Kohl      |  80000 | 2017-06-11 09:00:00 | Admin      |          5 |                     NULL |               500000 |
+|           4 | Pratik     | Pandey    | 500000 | 2017-02-20 09:00:00 | Admin      |         20 |                    80000 |               500000 |
+|           5 | Christine  | Robinson  | 500000 | 2017-06-11 09:00:00 | Admin      |          7 |                   500000 |                90000 |
+|           8 | Deepika    | Sharma    |  90000 | 2017-04-11 09:00:00 | Admin      |         17 |                   500000 |                 NULL |
+|           1 | James      | Smith     | 100000 | 2017-02-20 09:00:00 | HR         |          2 |                     NULL |               300000 |
+|           3 | Alex       | Garner    | 300000 | 2017-02-20 09:00:00 | HR         |         11 |                   100000 |                 NULL |
++-------------+------------+-----------+--------+---------------------+------------+------------+--------------------------+----------------------+
+8 rows in set (0.00 sec)
+
+######--*fetch the salary of the employee is higher or lower or equal to previous employee
+
+mysql> SELECT E.*,
+    -> LAG(SALARY) OVER(PARTITION BY DEPARTMENT ORDER BY EMPLOYEE_ID ) AS PREVIOUS_EMPLOYEE_SALARY,
+    -> CASE WHEN E.SALARY >LAG(SALARY) OVER(PARTITION BY DEPARTMENT ORDER BY EMPLOYEE_ID ) THEN 'HIGHER_THAN_PREVIOUS'
+    ->      WHEN E.SALARY <LAG(SALARY) OVER(PARTITION BY DEPARTMENT ORDER BY EMPLOYEE_ID ) THEN 'LOWER_THAN_PREVIOUS'
+    ->      WHEN E.SALARY = LAG(SALARY) OVER(PARTITION BY DEPARTMENT ORDER BY EMPLOYEE_ID ) THEN 'EQUAL_TO_PREVIOUS'
+    ->      END SALARY_COMPARISON
+    -> FROM EMPLOYEE AS E;
++-------------+------------+-----------+--------+---------------------+------------+------------+--------------------------+----------------------+
+| EMPLOYEE_ID | FIRST_NAME | LAST_NAME | SALARY | JOINING_DATE        | DEPARTMENT | MANAGER_ID | PREVIOUS_EMPLOYEE_SALARY | SALARY_COMPARISON    |
++-------------+------------+-----------+--------+---------------------+------------+------------+--------------------------+----------------------+
+|           6 | Deepak     | Gupta     | 200000 | 2017-06-11 09:00:00 | Account    |         15 |                     NULL | NULL                 |
+|           7 | Jennifer   | Paul      |  75000 | 2017-01-20 09:00:00 | Account    |         12 |                   200000 | LOWER_THAN_PREVIOUS  |
+|           2 | Jessica    | Kohl      |  80000 | 2017-06-11 09:00:00 | Admin      |          5 |                     NULL | NULL                 |
+|           4 | Pratik     | Pandey    | 500000 | 2017-02-20 09:00:00 | Admin      |         20 |                    80000 | HIGHER_THAN_PREVIOUS |
+|           5 | Christine  | Robinson  | 500000 | 2017-06-11 09:00:00 | Admin      |          7 |                   500000 | EQUAL_TO_PREVIOUS    |
+|           8 | Deepika    | Sharma    |  90000 | 2017-04-11 09:00:00 | Admin      |         17 |                   500000 | LOWER_THAN_PREVIOUS  |
+|           1 | James      | Smith     | 100000 | 2017-02-20 09:00:00 | HR         |          2 |                     NULL | NULL                 |
+|           3 | Alex       | Garner    | 300000 | 2017-02-20 09:00:00 | HR         |         11 |                   100000 | HIGHER_THAN_PREVIOUS |
++-------------+------------+-----------+--------+---------------------+------------+------------+--------------------------+----------------------+
+8 rows in set (0.00 sec)
+
+WORK IN PROGRESSS.............................................
+WORK FOR PROGRESS.............................................
+
