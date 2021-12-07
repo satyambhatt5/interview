@@ -6,7 +6,13 @@ https://stevestedman.com/2015/05/tsql-join-types-poster-version-4-1/
 
 https://www.javatpoint.com/mysql-tutorial
 
+https://github.com/spark-examples/pyspark-examples
 
+https://towardsdatascience.com/scalable-efficient-big-data-analytics-machine-learning-pipeline-architecture-on-cloud-4d59efc092b5
+
+https://colab.research.google.com/drive/1R_-d7l0gZSdaNbe-ImYHVRtAWoIeEbnv?authuser=1#scrollTo=d3KnhXzwASUQ
+
+https://docs.microsoft.com/en-us/azure/data-factory/lab-data-flow-data-share
 
 
 # This is interview importent question as duing live intevriew
