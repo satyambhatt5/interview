@@ -21,9 +21,7 @@ https://docs.microsoft.com/en-us/azure/data-factory/lab-data-flow-data-share
 
 1-How to swap the value?
    
-   <<<<a=10
-   b=20
-   a,b=b,a>>>>
+   <<<<a=10 b=20     a,b=b,a>>>>
 
 2-Find the occurance in in given string ?
 
@@ -43,8 +41,5 @@ https://docs.microsoft.com/en-us/azure/data-factory/lab-data-flow-data-share
 
 10-Give one example 
 
-10-What is the palaindrom ?
-
-
-
+11-What is the palaindrom ?
 
