@@ -14,7 +14,7 @@ https://colab.research.google.com/drive/1R_-d7l0gZSdaNbe-ImYHVRtAWoIeEbnv?authus
 
 https://docs.microsoft.com/en-us/azure/data-factory/lab-data-flow-data-share
 
-
+https://ajaytech.co/python-challenges/
 # This is interview importent question as duing live intevriew
 
                                     <<<<<<<<<< All the importent question >>>>>>>>>>>>>  
