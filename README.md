@@ -70,4 +70,6 @@ mycursor.execute("INSERT INTO customers (name, address) VALUES ('John', 'Highway
 
 mydb.commit() # Use this command after insert, update, delete commands
 
+https://github.com/khanhnamle1994/cracking-the-data-science-interview
+
 
