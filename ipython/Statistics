@@ -1,0 +1,71 @@
+Statistics
+
+How to Learn Statistics for Data Science As A Self Starter
+
+Basics Stats
+--------------------------------
+Probability
+1. Introduction to Basic Terms----
+2. Variables----
+3. Random Variables-----
+4. Population,Sample,Population Mean,------
+   Sample Mean----
+5. Population Distribution, Sample Distribution -----
+   and Sampling Distribution
+6. Mean, Median ,Mode-------
+7. Range-----
+8. Measure Of Dispersion------
+9. Variance-----
+10.Standard Deviation------
+11.Gaussian/Normal Distribution------
+
+Intermediate Stats
+--------------------------------------
+
+12. Standard Normal Distribution  ----- when the means =0 and standard deviation =1 
+
+13. Z score--  When you have multiple samples and want to describe the standard deviation of those sample means (the standard error), 
+you would use this z score formula:
+z = (x – μ) / (σ / √n)
+This z-score will tell you how many standard errors there are between the sample mean and the population mean.
+https://www.statisticshowto.com/probability-and-statistics/z-score/
+
+14. Probability Density Function : 
+15. Cumulative distribution function: 
+
+
+16. Hypothesis Testing
+17. Many different plotting graphs
+18. Kernel Density Estimation
+19. Central Limit Theorem--------------- means follow the Gaussian distribution in the data set 
+
+20. Skewness of Data
+    Covariance : find the relation between the data with to -ve to +ve value 
+	
+    Pearson Correlation Coefficient: it is type cofficiant the should ly between the -1 to 1  , higher the +ve value greater the relation between the x and y
+	
+    Spearman Rank Correlation Coefficient:
+	
+    Importance of Correlation:
+	
+    Hypothesis Testing
+    Null Hypothesis 
+    Alternative Hypothesis
+    Understanding Hypothesis testing
+    (T-test,Chi square test, p values)
+	
+	chi-square -- it is non parametric test it is performed on the categorical values it should be ordinal and nominal data 
+	
+	t-TEST- It is parametric test it is performed on the continous value data 
+
+Advanced Stats
+-------------------------------------
+21. Q-Q plot
+22. Chebyshev’s inequality
+23. Discrete And Continuous Distribution
+24. Bernoulli And Binomial Distribution
+25. Log Normal Distribution
+26. Power Law Distribution
+27. Box Cox Tranform
+28. Poisson Disstribution
+29. Application Of Non Gaussian Distribution
